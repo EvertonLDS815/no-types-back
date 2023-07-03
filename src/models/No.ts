@@ -1,15 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.No = void 0;
-const mongoose_1 = require("mongoose");
-exports.No = (0, mongoose_1.model)('No', new mongoose_1.Schema({
-    name: {
+import {Schema, model} from 'mongoose';
+
+export const No = model('No', new Schema({
+	name: {
         type: String,
         require: true
     },
     nivel: {
         type: String,
-        enum: ['Básico', 'Intermediário', 'Avançado'],
+		enum: ['Básico', 'Intermediário', 'Avançado'],
         default: 'Básico'
     },
     type: {
@@ -26,4 +24,4 @@ exports.No = (0, mongoose_1.model)('No', new mongoose_1.Schema({
         type: String,
         require: true
     },
-}));
+}))

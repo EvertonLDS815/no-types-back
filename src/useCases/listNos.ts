@@ -1,6 +1,6 @@
-import { Request, Response} from 'express';
+import { Request, Response } from 'express';
 
-import { No } from '../models/No'
+import { No } from '../models/No';
 
 export async function listNos(req: Request, res: Response) {
 	try {

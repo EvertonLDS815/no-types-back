@@ -1,21 +1,14 @@
-import { Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 import { No } from '../models/No';
 
 export async function createNo(req: Request, res: Response) {
 	try {
-
-		const {
-			name,
-			nivel,
-			type,
-			linkVideo,
-			description
-		} = req.body;
+		const { name, nivel, type, linkVideo, description } = req.body;
 
 		if (!['Básico', 'Intermediário', 'Avançado'].includes(nivel)) {
 			return res.status(404).json({
-				error: 'nivel should be one of these: Básico, Intermediário e Avançado.'
+				error: 'nivel should be one of these: Básico, Intermediário e Avançado.',
 			});
 		}
 		const linkImage = req.file?.filename;
@@ -23,9 +16,12 @@ export async function createNo(req: Request, res: Response) {
 			name,
 			nivel,
 			type,
-			linkImage: linkImage?.replace(linkImage, `http://localhost:3001/uploads/${linkImage}`),
+			linkImage: linkImage?.replace(
+				linkImage,
+				`http://localhost:3001/uploads/${linkImage}`,
+			),
 			linkVideo,
-			description
+			description,
 		});
 		res.status(201).json(no);
 	} catch (err) {
